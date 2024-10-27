@@ -68,24 +68,6 @@ async function storeVideo(video) {
     });
 }
 
-// function removeOldestIfNeeded() {
-//     db.all(`SELECT COUNT(*) AS count FROM videos`, [], (err, rows) => {
-//         if (err) {
-//             console.error(err.message);
-//             return;
-//         }
-//         const count = rows[0].count;
-
-//         if (count >= 40) {
-//           console.log('check');
-//             db.run(`DELETE FROM videos ORDER BY publishDate ASC LIMIT 1`, (err) => {
-//                 if (err) {
-//                     console.error(err.message);
-//                 }
-//             });
-//         }
-//     });
-// }
 function removeOldestIfNeeded() {
     db.all(`SELECT COUNT(*) AS count FROM videos`, [], (err, rows) => {
         if (err) {
@@ -111,7 +93,3 @@ function removeOldestIfNeeded() {
         }
     });
 }
-
-
-
-
