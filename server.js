@@ -1,37 +1,7 @@
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const cors = require('cors');
-// const db = require('./database');
-// require('./fetchVideos'); // Ensure to run the fetch videos functionality
-
-// const app = express();
-// const PORT = process.env.PORT || 3000;
-
-// // Serve static files from the 'public' directory
-// app.use(express.static('public'));
-// app.use(cors());
-// app.use(bodyParser.json());
-
-// // Endpoint to get videos
-// app.get('/api/videos', (req, res) => {
-//     db.all(`SELECT * FROM videos ORDER BY publishDate DESC`, [], (err, rows) => {
-//         if (err) {
-//             return res.status(500).send('Error fetching videos.');
-//         }
-//         res.json(rows);
-//     });
-// });
-
-// // Start the server
-// app.listen(PORT, () => {
-//     console.log(`Server running at http://localhost:${PORT}`);
-// });
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('./database');
-//const fetchLatestVideos = require('./fetchVideos'); // Your function to fetch latest videos
 const app = express();
 const PORT = process.env.PORT || 3000;
 const { fetchLatestVideos } = require('./fetchVideos');
