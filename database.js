@@ -1,30 +1,3 @@
-// const sqlite3 = require('sqlite3').verbose();
-// const path = require('path');
-
-// // Create a new SQLite database
-// const db = new sqlite3.Database(path.join(__dirname, 'videos.db'), (err) => {
-//     if (err) {
-//         console.error(err.message);
-//     }
-//     console.log('Connected to the SQLite database.');
-
-//     // Create table if it doesn't exist
-//     db.run(`CREATE TABLE IF NOT EXISTS videos (
-//         id INTEGER PRIMARY KEY AUTOINCREMENT,
-//         videoId TEXT UNIQUE,
-//         title TEXT,
-//         publishDate TEXT
-//     )`, (err) => {
-//         if (err) {
-//             console.error(err.message);
-//         }
-//     });
-  
-
-// });
-
-// module.exports = db;
-
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
