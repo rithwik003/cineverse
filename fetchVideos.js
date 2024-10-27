@@ -1,8 +1,8 @@
 const fetch = require('node-fetch');
 const db = require('./database');
 
-const API_KEY = 'AIzaSyABe4Nr4isDly6AXGxgkMDxxNjnN3d8bRo'; // Replace with your YouTube API key
-const API_KEY1='AIzaSyDcvEAUNRgeM_Bcuo8zwt81cCq8Wqj_aJI';
+const API_KEY = ''; // Replace with your YouTube API key
+
 const CHANNEL_IDS = [
     'UCgHmVF2DHE6JI90x0NwESuQ',
     'UCIIIR-lkJcM6Pi2N7-TxbRA',
