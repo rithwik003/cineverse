@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVerse Reviews</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5677388980983709"
+     crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="GkA9B9zz_4XM5jdySd2RiDAxNoidv9chJLZLIsm0H6c" />
+</head>
+<body>
+    <div class="container">
+      <h1 class="heading">
+  <img class="logo" src="https://cdn.glitch.global/fa26d28c-c220-46ca-a496-a52719c99324/cineverse_logo.png?v=1728465162550" alt="CineVerse Logo">
+  <span>CineVerse Reviews</span>
+</h1>
+
+<!--         <h1 class="heading"><img class="logo" src="https://cdn.glitch.global/fa26d28c-c220-46ca-a496-a52719c99324/cineverse_logo.png?v=1728465162550">CineVerse Reviews</h1> -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for reviews...">
+            <button onclick="searchVideos()">Search</button>
+        </div>
+        <div id="videoList"></div>
+    </div>
+
+    <script>
+        async function loadVideos() {
+            const response = await fetch('/api/videos');
+            const videos = await response.json();
+
+            const videoList = document.getElementById('videoList');
+            videoList.innerHTML = '';
+            
+            videos.forEach(video => {
+                const videoFrame = `
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/${video.videoId}" 
+                                frameborder="0" allowfullscreen></iframe>
+                        <p>${video.title}</p>
+                        <small>Published on: ${new Date(video.publishDate).toLocaleDateString()}</small>
+                    </div>
+                `;
+                videoList.innerHTML += videoFrame;
+            });
+        }
+
+        async function searchVideos() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const response = await fetch('/api/videos');
+            const videos = await response.json();
+
+            const videoList = document.getElementById('videoList');
+            videoList.innerHTML = '';
+
+            const filteredVideos = videos.filter(video => video.title.toLowerCase().includes('review') && video.title.toLowerCase().includes(query));
+
+            filteredVideos.forEach(video => {
+                const videoFrame = `
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/${video.videoId}" 
+                                frameborder="0" allowfullscreen></iframe>
+                        <p>${video.title}</p>
+                        <small>Published on: ${new Date(video.publishDate).toLocaleDateString()}</small>
+                    </div>
+                `;
+                videoList.innerHTML += videoFrame;
+            });
+        }
+
+        window.onload = loadVideos;
+    </script>
+</body>
+</html>
